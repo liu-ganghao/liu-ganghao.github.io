@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Theo Liu (刘港昊)</title>
+  <meta name="description" content="Ph.D. candidate in Computer Science at ECUST. Research on efficient LLM fine-tuning (PEFT), MoE, and multimodal large language models." />
+
+  <!-- ============================================================
+       Personal academic homepage — Theo Liu (刘港昊)
+       Single self-contained file. To deploy: see README.md.
+       To use a real photo: replace the .avatar block below and
+       drop a square image at assets/profile.jpg.
+       ============================================================ -->
+  <style>
+    :root{
+      --bg:#ffffff;
+      --page:#f6f7f9;
+      --ink:#1f2430;
+      --body:#3a4150;
+      --muted:#717a89;
+      --line:#e6e9ee;
+      --accent:#1a5fb4;        /* academic blue */
+      --accent-soft:#e8f0fb;
+      --chip-bg:#eef1f5;
+      --chip-ink:#41546b;
+      --tag-a:#b3261e;         /* CCF-A / top conf  */
+      --tag-j:#1a5fb4;         /* Q1 journal        */
+      --tag-c:#5f6b7a;         /* CCF-C / Q2        */
+      --ok:#1b7f4b;
+      --ok-bg:#e7f4ec;
+      --pend:#9a6a00;
+      --pend-bg:#fbf2dd;
+      --radius:12px;
+      --shadow:0 1px 3px rgba(20,30,60,.06), 0 8px 24px rgba(20,30,60,.05);
+      --maxw:880px;
+    }
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      background:var(--page);
+      color:var(--body);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei","Hiragino Sans GB",Helvetica,Arial,sans-serif;
+      font-size:16px;
+      line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:var(--accent);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    /* ---------- sticky nav ---------- */
+    .nav{
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,255,255,.86);
+      backdrop-filter:saturate(180%) blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      max-width:var(--maxw);margin:0 auto;padding:11px 20px;
+      display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    }
+    .nav-brand{font-weight:700;color:var(--ink);font-size:15px;}
+    .nav-brand .cn{color:var(--muted);font-weight:600;margin-left:4px;}
+    .nav-links{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;}
+    .nav-links a{
+      color:var(--muted);font-size:13.5px;font-weight:500;
+      padding:6px 10px;border-radius:8px;transition:.15s;
+    }
+    .nav-links a:hover{background:var(--accent-soft);color:var(--accent);text-decoration:none;}
+
+    /* ---------- layout ---------- */
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+    main{padding:32px 20px 80px;}
+
+    /* ---------- hero ---------- */
+    .hero{
+      background:var(--bg);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:34px 32px;
+      display:flex;gap:30px;align-items:flex-start;
+    }
+    .avatar{
+      flex:0 0 auto;width:120px;height:120px;border-radius:50%;
+      display:grid;place-items:center;
+      font-size:42px;font-weight:700;color:#fff;letter-spacing:1px;
+      background:linear-gradient(135deg,#1a5fb4,#3b82c4 60%,#7aa7d8);
+      box-shadow:0 6px 18px rgba(26,95,180,.30);
+    }
+    .hero-txt h1{
+      margin:0 0 2px;font-size:30px;line-height:1.2;color:var(--ink);
+      letter-spacing:-.3px;
+    }
+    .hero-txt h1 .cn{font-size:21px;color:var(--muted);font-weight:600;margin-left:8px;}
+    .hero-aff{color:var(--accent);font-weight:600;margin:2px 0 10px;font-size:15.5px;}
+    .hero-aff .city{color:var(--muted);font-weight:500;}
+    .hero-tag{color:var(--body);font-size:15px;margin:0 0 16px;max-width:60ch;}
+    .contacts{display:flex;flex-wrap:wrap;gap:9px;}
+    .btn{
+      display:inline-flex;align-items:center;gap:7px;
+      padding:8px 14px;border-radius:999px;font-size:13.5px;font-weight:600;
+      border:1px solid var(--line);background:#fff;color:var(--body);
+      transition:.15s;
+    }
+    .btn:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+    .btn.primary:hover{background:#15569c;}
+
+    /* ---------- section ---------- */
+    section{margin-top:46px;scroll-margin-top:72px;}
+    h2{
+      font-size:21px;color:var(--ink);margin:0 0 16px;font-weight:700;
+      display:flex;align-items:center;gap:9px;padding-bottom:10px;
+      border-bottom:2px solid var(--line);
+    }
+    h2 .ico{font-size:21px;}
+
+    .card{
+      background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
+      padding:22px 24px;box-shadow:var(--shadow);
+    }
+    p{margin:.5em 0;}
+
+    /* ---------- chips / tags ---------- */
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+    .chip{
+      background:var(--chip-bg);color:var(--chip-ink);
+      padding:5px 12px;border-radius:999px;font-size:13px;font-weight:500;
+    }
+    .vtag{
+      display:inline-block;padding:2px 9px;border-radius:6px;font-size:12px;font-weight:700;
+      letter-spacing:.2px;white-space:nowrap;
+    }
+    .vtag.a{background:#fdecea;color:var(--tag-a);}
+    .vtag.j{background:var(--accent-soft);color:var(--tag-j);}
+    .vtag.c{background:#eef0f3;color:var(--tag-c);}
+    .status{display:inline-block;padding:2px 9px;border-radius:6px;font-size:12px;font-weight:600;}
+    .status.ok{background:var(--ok-bg);color:var(--ok);}
+    .status.pend{background:var(--pend-bg);color:var(--pend);}
+
+    /* ---------- news ---------- */
+    .news li{padding:3px 0;}
+    .news .when{color:var(--accent);font-weight:700;margin-right:8px;font-size:14px;}
+
+    /* ---------- edu / exp timeline ---------- */
+    .row{
+      display:grid;grid-template-columns:170px 1fr;gap:14px 22px;
+      padding:14px 0;border-bottom:1px dashed var(--line);
+    }
+    .row:last-child{border-bottom:none;}
+    .row .date{color:var(--muted);font-size:14px;font-weight:600;}
+    .row h3{margin:0 0 3px;font-size:16.5px;color:var(--ink);}
+    .row .deg{color:var(--accent);font-weight:600;font-size:14px;}
+    .row .meta{color:var(--muted);font-size:13.5px;}
+    .row ul{margin:7px 0 0;padding-left:20px;}
+    .row li{margin:3px 0;}
+    .role{color:var(--accent);font-weight:700;}
+    .org{color:var(--ink);font-weight:600;}
+
+    /* ---------- publications ---------- */
+    .pub{
+      padding:16px 0;border-bottom:1px solid var(--line);
+    }
+    .pub:first-child{padding-top:0;}
+    .pub:last-child{border-bottom:none;}
+    .pub .title{color:var(--ink);font-weight:600;font-size:15.5px;line-height:1.5;}
+    .pub .auth{color:var(--muted);font-size:13.8px;margin-top:3px;}
+    .pub .auth me{color:var(--ink);font-weight:700;}
+    .pub .meta-line{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:8px;}
+    .pub .venue{color:var(--body);font-size:14px;font-weight:600;}
+    .pub .links{margin-top:8px;font-size:13.5px;}
+    .pubsub{font-size:13px;color:var(--muted);font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin:22px 0 8px;}
+
+    /* ---------- skills ---------- */
+    .skills{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;}
+    .skills div{padding:5px 0;}
+    .skills b{color:var(--ink);}
+
+    footer{text-align:center;color:var(--muted);font-size:13px;padding:30px 20px 40px;}
+    footer a{color:var(--muted);}
+
+    @media (max-width:640px){
+      .hero{flex-direction:column;align-items:center;text-align:center;padding:28px 22px;}
+      .contacts{justify-content:center;}
+      .hero-tag{margin-left:auto;margin-right:auto;}
+      .row{grid-template-columns:1fr;gap:3px;}
+      .skills{grid-template-columns:1fr;}
+      .nav-links{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">Theo Liu<span class="cn">· 刘港昊</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#news">News</a>
+        <a href="#education">Education</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+      <!-- Default: initials avatar. Swap for <img src="assets/profile.jpg" .../> when you add a photo. -->
+      <div class="avatar" aria-hidden="true">TL</div>
+      <div class="hero-txt">
+        <h1>Theo Liu<span class="cn">刘港昊</span></h1>
+        <div class="hero-aff">Ph.D. Candidate, Computer Science · East China University of Science and Technology <span class="city">· Shanghai</span></div>
+        <p class="hero-tag">My research centers on <b>Large Language Models</b> — parameter-efficient fine-tuning (PEFT), Mixture-of-Experts (MoE) training &amp; inference optimization, and multimodal LLMs. I also build LLM applications end-to-end, from training and reinforcement learning (GRPO) to agent workflows and RAG systems.</p>
+        <div class="contacts">
+          <a class="btn primary" href="mailto:ssssliug@foxmail.com">✉ Email</a>
+          <!-- TODO: paste your real links below -->
+          <a class="btn" href="https://github.com/liu-ganghao" target="_blank" rel="noopener">⌥ GitHub</a>
+          <a class="btn" href="https://scholar.google.com/" target="_blank" rel="noopener">▣ Scholar</a>
+          <a class="btn" href="assets/CV-Theo-Liu.pdf" target="_blank" rel="noopener">⤓ CV</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about">
+      <h2><span class="ico">👋</span>About Me</h2>
+      <div class="card">
+        <p>I am a Ph.D. candidate in Computer Science and Technology at the <b>East China University of Science and Technology (ECUST)</b>, Shanghai. Prior to this, I received my Master's in Software Engineering from Zhengzhou University of Light Industry and my Bachelor's from Hebei University of Architecture.</p>
+        <p>My work spans <b>LLM algorithms</b> and <b>AI application engineering</b>: efficient fine-tuning (SFT / PEFT / GRPO), MoE architecture design, inference acceleration, retrieval-augmented generation (RAG), agent workflows, and full-stack deployment. I enjoy turning research ideas into shipped products, with hands-on experience in model training platforms, generative-AI service filing, and CPU-side inference optimization.</p>
+      </div>
+    </section>
+
+    <!-- ============ RESEARCH INTERESTS ============ -->
+    <section id="research">
+      <h2><span class="ico">🔬</span>Research Interests</h2>
+      <div class="card">
+        <div class="chips">
+          <span class="chip">Parameter-Efficient Fine-Tuning (PEFT)</span>
+          <span class="chip">Mixture-of-Experts (MoE)</span>
+          <span class="chip">Multimodal LLMs</span>
+          <span class="chip">Reinforcement Learning · GRPO</span>
+          <span class="chip">LLM Inference Optimization</span>
+          <span class="chip">Retrieval-Augmented Generation (RAG)</span>
+          <span class="chip">Agents &amp; Workflows</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEWS ============ -->
+    <section id="news">
+      <h2><span class="ico">📢</span>News</h2>
+      <div class="card">
+        <ul class="news">
+          <li><span class="when">2026</span>One paper accepted to <b>ACL 2026</b> (CCF-A) — <i>Split-Path Experts for LLM Fine-Tuning</i>.</li>
+          <li><span class="when">2026</span>One paper accepted to <b>IJCNN 2026</b> (CCF-C); an <b>EMNLP 2026</b> submission received a meta-review score of 4/5.</li>
+          <li><span class="when">2025</span>Three papers published in SCI Q1 Top journals (<i>Pattern Recognition</i> ×2, <i>Expert Systems with Applications</i>).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section id="education">
+      <h2><span class="ico">📖</span>Education</h2>
+      <div class="card">
+        <div class="row">
+          <div class="date">Sep 2023 – Jun 2027</div>
+          <div>
+            <h3>East China University of Science and Technology <span class="meta">· Shanghai</span></h3>
+            <div class="deg">Ph.D. in Computer Science and Technology</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="date">Sep 2020 – Jun 2023</div>
+          <div>
+            <h3>Zhengzhou University of Light Industry <span class="meta">· Zhengzhou</span></h3>
+            <div class="deg">M.Eng. in Software Engineering</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="date">Sep 2015 – Jun 2019</div>
+          <div>
+            <h3>Hebei University of Architecture <span class="meta">· Zhangjiakou</span></h3>
+            <div class="deg">B.Eng. in Computer Science and Technology</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PUBLICATIONS ============ -->
+    <section id="publications">
+      <h2><span class="ico">📝</span>Publications</h2>
+      <div class="card">
+
+        <div class="pubsub">Conference Papers</div>
+
+        <div class="pub">
+          <div class="title">Specialization without Sparsity: Efficient and Expressive Split-Path Experts for LLM Fine-Tuning</div>
+          <div class="auth"><me>Theo Liu</me>, et al.</div>
+          <div class="meta-line">
+            <span class="venue">ACL 2026</span>
+            <span class="vtag a">CCF-A</span>
+            <span class="status ok">Accepted</span>
+          </div>
+          <!-- <div class="links"><a href="#">[Paper]</a> <a href="#">[Code]</a></div> -->
+        </div>
+
+        <div class="pub">
+          <div class="title">MelonBench: A Benchmark for Coded Entity Resolution over Noisy Web Evidence</div>
+          <div class="auth"><me>Theo Liu</me>, et al.</div>
+          <div class="meta-line">
+            <span class="venue">EMNLP 2026</span>
+            <span class="vtag a">Top NLP</span>
+            <span class="status pend">Meta 4 / 5</span>
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="title">Graph Feature Engineering and Label Spreading Optimization for Node Classification</div>
+          <div class="auth"><me>Theo Liu</me>, et al.</div>
+          <div class="meta-line">
+            <span class="venue">IJCNN 2026</span>
+            <span class="vtag c">CCF-C</span>
+            <span class="status ok">Accepted</span>
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="title">Rethinking Visual Evidence in Medical MLLMs: Contrastive Visual Calibration for Enhanced Diagnostic Reliability</div>
+          <div class="auth"><me>Theo Liu</me>, et al.</div>
+          <div class="meta-line">
+            <span class="venue">AAAI</span>
+            <span class="vtag a">CCF-A</span>
+            <span class="status pend">Under Review</span>
+          </div>
+        </div>
+
+        <div class="pubsub">Journal Articles</div>
+
+        <div class="pub">
+          <div class="title">Geometric and Topological Structure-Induced Large-Scale Graph Learning for Social and Information Networks</div>
+          <div class="auth"><me>Theo Liu</me>, et al.</div>
+          <div class="meta-line">
+            <span class="venue">Pattern Recognition</span>
+            <span class="vtag j">SCI Q1 Top</span>
+            <span class="status ok">Published</span>
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="title">Confusion Distillation for Continual Self-Supervised Learning</div>
+          <div class="auth"><me>Theo Liu</me>, et al.</div>
+          <div class="meta-line">
+            <span class="venue">Pattern Recognition</span>
+            <span class="vtag j">SCI Q1 Top</span>
+            <span class="status ok">Published</span>
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="title">Energy Diffusion Prior for Infrared Small Target Detection: Build Representations for Objects instead of Scenarios</div>
+          <div class="auth"><me>Theo Liu</me>, et al.</div>
+          <div class="meta-line">
+            <span class="venue">Expert Systems with Applications</span>
+            <span class="vtag j">SCI Q1 Top</span>
+            <span class="status ok">Published</span>
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="title">SPAR: Split-Path Adaptive Representation for Effective Fine-Tuning of Large Language Models</div>
+          <div class="auth"><me>Theo Liu</me>, et al.</div>
+          <div class="meta-line">
+            <span class="venue">IEEE Trans. on Emerging Topics in Computational Intelligence</span>
+            <span class="vtag c">SCI Q2</span>
+            <span class="status pend">Under Review</span>
+          </div>
+        </div>
+
+        <p style="margin-top:14px;color:var(--muted);font-size:13px;">
+          (* Equal contribution where applicable. Add <code>[Paper]</code> / <code>[Code]</code> links by uncommenting the <code>.links</code> lines.)
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects">
+      <h2><span class="ico">🛠</span>Projects</h2>
+      <div class="card">
+
+        <div class="row">
+          <div class="date">Apr 2026 – Oct 2026</div>
+          <div>
+            <h3>Medical Imaging LLM — Automated Radiology Report Generation <span class="meta">· NoDeskAI</span></h3>
+            <div class="meta">Qwen3.5 Multimodal LLM · CT Understanding · 3D → VLM</div>
+            <ul>
+              <li>Led project planning and the overall technical roadmap; designed the CT-image input adaptation scheme for a multimodal LLM.</li>
+              <li>Guided model fine-tuning and reinforcement learning (GRPO); researched 3D → VLM input adaptation for efficient transfer of volumetric medical images.</li>
+              <li>Built an end-to-end pipeline covering data processing, training, evaluation, and deployment.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="date">Oct 2023 – Jan 2024</div>
+          <div>
+            <h3>Knowledge-Enhanced After-Sales QA System (LLM + RAG) <span class="meta">· Lexus</span></h3>
+            <div class="meta">Hybrid Retrieval · BM25 + Dense · Re-ranking</div>
+            <ul>
+              <li>Designed and implemented the core retrieval module: a hybrid retrieval mechanism (BM25 + vector search) with dual-path (question / standard-answer) vector retrieval and re-ranking for higher relevance.</li>
+              <li>Built the LLM inference call-chain and prompt engineering to improve answer accuracy and consistency, surfacing cited document indices.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section id="experience">
+      <h2><span class="ico">💼</span>Experience</h2>
+      <div class="card">
+
+        <div class="row">
+          <div class="date">May 2024 – Jun 2025</div>
+          <div>
+            <h3><span class="role">AI Algorithm Engineer</span> · <span class="org">Shanghai Shuheng Information Technology</span></h3>
+            <ul>
+              <li>Contributed to an LLM training platform: data processing, model training, model filing (备案), and frontier-technology research.</li>
+              <li>Trained and filed the <b>“Ming Zhi Gu Wen”</b> LLM — helped the company complete Generative AI service filing in 2024, among the first 60 models filed in Shanghai.</li>
+              <li>Co-developed a training &amp; version-management platform integrating <b>LLaMA-Factory</b> for traceable, reproducible model iteration.</li>
+              <li>Optimized <b>CPU-side LLM inference</b> based on <b>llama.cpp</b>, deploying Qwen / DeepSeek with multi-threaded parallel acceleration.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="date">Jan 2021 – Mar 2022</div>
+          <div>
+            <h3><span class="role">Development Engineer</span> · <span class="org">Zhengzhou Qingruan Technology</span></h3>
+            <ul>
+              <li>Requirements analysis, solution design, project delivery management, and R&amp;D coordination.</li>
+              <li>Projects: <b>Chromosome Karyotype Intelligent Analysis System</b> (2021); <b>Hadoop-based Power Distribution Management System</b> (2022).</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ HONORS ============ -->
+    <section id="honors">
+      <h2><span class="ico">🏆</span>Honors &amp; Awards</h2>
+      <div class="card">
+        <ul style="margin:0;padding-left:20px;">
+          <li>National-level Discipline Competition — <b>Second Prize ×2</b></li>
+          <li>China Collegiate Computer Design Contest (Beijing–Tianjin–Hebei) — <b>First Prize</b></li>
+          <li>“Internet+” College Students Innovation &amp; Entrepreneurship Competition — <b>Provincial Third Prize</b></li>
+          <li>University-level Scholarships — <b>consecutive years</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section id="skills">
+      <h2><span class="ico">🧰</span>Skills</h2>
+      <div class="card skills">
+        <div><b>LLM:</b> PyTorch, Transformers, SFT, PEFT, GRPO, MoE</div>
+        <div><b>LLM Apps:</b> RAG, Agents, Prompt Engineering, llama.cpp</div>
+        <div><b>Engineering:</b> Linux, Git, Docker, model training &amp; deployment</div>
+        <div><b>Full-stack:</b> Vue, Node.js, Java, MongoDB</div>
+        <div><b>Tooling:</b> Claude Code, Cursor (Vibe Coding)</div>
+        <div><b>Language:</b> English — CET-4 / CET-6</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © <span id="yr">2026</span> Theo Liu · <a href="mailto:ssssliug@foxmail.com">ssssliug@foxmail.com</a><br/>
+    <span style="opacity:.7">Built as a single-file academic homepage.</span>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
