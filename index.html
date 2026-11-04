@@ -11,6 +11,9 @@
        Single self-contained file. To deploy: see README.md.
        To use a real photo: replace the .avatar block below and
        drop a square image at assets/profile.jpg.
+       Bilingual (EN/中文): all translatable strings live in the
+       I18N dict in the script at the bottom; the toggle button
+       sits in the nav. Choice is remembered in localStorage.
        ============================================================ -->
   <style>
     :root{
@@ -69,6 +72,12 @@
       padding:6px 10px;border-radius:8px;transition:.15s;
     }
     .nav-links a:hover{background:var(--accent-soft);color:var(--accent);text-decoration:none;}
+    .lang-btn{
+      border:1px solid var(--line);background:#fff;color:var(--body);
+      font-size:13px;font-weight:600;padding:5px 12px;border-radius:8px;
+      cursor:pointer;transition:.15s;font-family:inherit;
+    }
+    .lang-btn:hover{border-color:var(--accent);color:var(--accent);}
 
     /* ---------- layout ---------- */
     .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
@@ -201,12 +210,13 @@
     <div class="nav-inner">
       <div class="nav-brand">Theo Liu<span class="cn">· 刘港昊</span></div>
       <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#news">News</a>
-        <a href="#publications">Publications</a>
-        <a href="#education">Education</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#research" data-i18n="nav_research">Research</a>
+        <a href="#news" data-i18n="nav_news">News</a>
+        <a href="#publications" data-i18n="nav_pubs">Publications</a>
+        <a href="#education" data-i18n="nav_edu">Education</a>
       </div>
+      <button class="lang-btn" id="langBtn" type="button" title="切换语言 / Switch language">中文</button>
     </div>
   </nav>
 
@@ -218,10 +228,10 @@
       <div class="avatar" aria-hidden="true">TL</div>
       <div class="hero-txt">
         <h1>Theo Liu<span class="cn">刘港昊</span></h1>
-        <div class="hero-aff">Ph.D. Candidate, Computer Science · East China University of Science and Technology <span class="city">· Shanghai</span></div>
-        <p class="hero-tag">My research centers on <b>Large Language Models</b> — parameter-efficient fine-tuning (PEFT), Mixture-of-Experts (MoE) training &amp; inference optimization, and multimodal LLMs. I also build LLM applications end-to-end, from training and reinforcement learning (GRPO) to agent workflows and RAG systems.</p>
+        <div class="hero-aff" data-i18n-html="hero_aff">Ph.D. Candidate, Computer Science · East China University of Science and Technology <span class="city">· Shanghai</span></div>
+        <p class="hero-tag" data-i18n-html="hero_tag">My research centers on <b>Large Language Models</b> — parameter-efficient fine-tuning (PEFT), Mixture-of-Experts (MoE) training &amp; inference optimization, and multimodal LLMs. I also build LLM applications end-to-end, from training and reinforcement learning (GRPO) to agent workflows and RAG systems.</p>
         <div class="contacts">
-          <a class="btn primary" href="mailto:ssssliug@foxmail.com">✉ Email</a>
+          <a class="btn primary" href="mailto:ssssliug@foxmail.com" data-i18n="btn_email">✉ Email</a>
           <a class="btn" href="https://github.com/liu-ganghao" target="_blank" rel="noopener">⌥ GitHub</a>
         </div>
       </div>
@@ -229,52 +239,52 @@
 
     <!-- ============ ABOUT ============ -->
     <section id="about">
-      <h2><span class="ico">👋</span>About Me</h2>
+      <h2 data-i18n="h_about"><span class="ico">👋</span>About Me</h2>
       <div class="card">
-        <p>I am a Ph.D. candidate in Computer Science and Technology at the <b>East China University of Science and Technology (ECUST)</b>, Shanghai.</p>
-        <p>My work spans <b>LLM algorithms</b> and <b>AI application engineering</b>: efficient fine-tuning (SFT / PEFT / GRPO), MoE architecture design, inference acceleration, retrieval-augmented generation (RAG), agent workflows, and full-stack deployment. I enjoy turning research ideas into shipped products, with hands-on experience in model training platforms, inference acceleration, and end-to-end LLM deployment.</p>
+        <p data-i18n-html="about_p1">I am a Ph.D. candidate in Computer Science and Technology at the <b>East China University of Science and Technology (ECUST)</b>, Shanghai.</p>
+        <p data-i18n-html="about_p2">My work spans <b>LLM algorithms</b> and <b>AI application engineering</b>: efficient fine-tuning (SFT / PEFT / GRPO), MoE architecture design, inference acceleration, retrieval-augmented generation (RAG), agent workflows, and full-stack deployment. I enjoy turning research ideas into shipped products, with hands-on experience in model training platforms, inference acceleration, and end-to-end LLM deployment.</p>
       </div>
     </section>
 
     <!-- ============ RESEARCH INTERESTS ============ -->
     <section id="research">
-      <h2><span class="ico">🔬</span>Research Interests</h2>
+      <h2 data-i18n="h_research"><span class="ico">🔬</span>Research Interests</h2>
       <div class="card">
         <div class="chips">
-          <span class="chip">Parameter-Efficient Fine-Tuning (PEFT)</span>
-          <span class="chip">Mixture-of-Experts (MoE)</span>
-          <span class="chip">Multimodal LLMs</span>
-          <span class="chip">Reinforcement Learning · GRPO</span>
-          <span class="chip">LLM Inference Optimization</span>
-          <span class="chip">LLM Knowledge Editing</span>
-          <span class="chip">Embodied AI · Vision-Language-Action</span>
-          <span class="chip">Retrieval-Augmented Generation (RAG)</span>
-          <span class="chip">Agents &amp; Workflows</span>
+          <span class="chip" data-i18n="chip1">Parameter-Efficient Fine-Tuning (PEFT)</span>
+          <span class="chip" data-i18n="chip2">Mixture-of-Experts (MoE)</span>
+          <span class="chip" data-i18n="chip3">Multimodal LLMs</span>
+          <span class="chip" data-i18n="chip4">Reinforcement Learning · GRPO</span>
+          <span class="chip" data-i18n="chip5">LLM Inference Optimization</span>
+          <span class="chip" data-i18n="chip6">LLM Knowledge Editing</span>
+          <span class="chip" data-i18n="chip7">Embodied AI · Vision-Language-Action</span>
+          <span class="chip" data-i18n="chip8">Retrieval-Augmented Generation (RAG)</span>
+          <span class="chip" data-i18n="chip9">Agents &amp; Workflows</span>
         </div>
       </div>
     </section>
 
     <!-- ============ NEWS ============ -->
     <section id="news">
-      <h2><span class="ico">📢</span>News</h2>
+      <h2 data-i18n="h_news"><span class="ico">📢</span>News</h2>
       <div class="card">
         <ul class="news">
-          <li><span class="when">2026</span>One paper accepted to <b>EMNLP 2026</b> — <i>MelonBench: A Benchmark for Coded Entity Resolution over Noisy Web Evidence</i>.</li>
-          <li><span class="when">2026</span>One paper accepted to <b>Findings of ACL 2026</b> (CCF-A) — <i>Specialization without Sparsity: Split-Path Experts for LLM Fine-Tuning</i>.</li>
-          <li><span class="when">2026</span>One paper accepted to <b>IJCNN 2026</b> (CCF-C).</li>
-          <li><span class="when">2026</span>One paper published in <b>Knowledge-Based Systems</b> (SCI Q1 Top) — <i>CAGE: Capacity Aware Geometric Editing</i>.</li>
-          <li><span class="when">2025–2026</span>Three papers published in SCI Q1 Top journals (<i>Pattern Recognition</i> ×2, <i>Expert Systems with Applications</i>).</li>
-          <li><span class="when">2026</span>Three papers under review — two at <b>ICLR 2027</b> (VLA sim-to-real, lifelong model editing) and one at <b>Pattern Recognition</b>.</li>
+          <li data-i18n-html="news1"><span class="when">2026</span>One paper accepted to <b>EMNLP 2026</b> — <i>MelonBench: A Benchmark for Coded Entity Resolution over Noisy Web Evidence</i>.</li>
+          <li data-i18n-html="news2"><span class="when">2026</span>One paper accepted to <b>Findings of ACL 2026</b> (CCF-A) — <i>Specialization without Sparsity: Split-Path Experts for LLM Fine-Tuning</i>.</li>
+          <li data-i18n-html="news3"><span class="when">2026</span>One paper accepted to <b>IJCNN 2026</b> (CCF-C).</li>
+          <li data-i18n-html="news4"><span class="when">2026</span>One paper published in <b>Knowledge-Based Systems</b> (SCI Q1 Top) — <i>CAGE: Capacity Aware Geometric Editing</i>.</li>
+          <li data-i18n-html="news5"><span class="when">2025–2026</span>Three papers published in SCI Q1 Top journals (<i>Pattern Recognition</i> ×2, <i>Expert Systems with Applications</i>).</li>
+          <li data-i18n-html="news6"><span class="when">2026</span>Three papers under review — two at <b>ICLR 2027</b> (VLA sim-to-real, lifelong model editing) and one at <b>Pattern Recognition</b>.</li>
         </ul>
       </div>
     </section>
 
     <!-- ============ PUBLICATIONS ============ -->
     <section id="publications">
-      <h2><span class="ico">📝</span>Publications</h2>
+      <h2 data-i18n="h_pubs"><span class="ico">📝</span>Publications</h2>
       <div class="card">
 
-        <div class="pubsub">Conference Papers</div>
+        <div class="pubsub" data-i18n="pubsub_conf">Conference Papers</div>
 
         <div class="pub">
           <div class="title">Specialization without Sparsity: Efficient and Expressive Split-Path Experts for LLM Fine-Tuning</div>
@@ -282,10 +292,10 @@
           <div class="meta-line">
             <span class="venue">Findings of the Association for Computational Linguistics: ACL 2026</span>
             <span class="vtag a">CCF-A</span>
-            <span class="status ok">Accepted</span>
+            <span class="status ok" data-i18n="st_accepted">Accepted</span>
           </div>
-          <div class="desc">Efficient and expressive MoE-style training and inference for LLMs via split-path experts.</div>
-          <!-- <div class="links"><a href="#">[Paper]</a> <a href="#">[Code]</a></div> -->
+          <div class="desc" data-i18n="desc1">Efficient and expressive MoE-style training and inference for LLMs via split-path experts.</div>
+          <div class="links"><a href="https://aclanthology.org/2026.findings-acl.975/" target="_blank" rel="noopener">[Paper]</a> <a href="https://doi.org/10.18653/v1/2026.findings-acl.975" target="_blank" rel="noopener">[DOI]</a></div>
         </div>
 
         <div class="pub">
@@ -294,9 +304,10 @@
           <div class="meta-line">
             <span class="venue">Proceedings of EMNLP 2026</span>
             <span class="vtag b">CCF-B</span>
-            <span class="status ok">Accepted</span>
+            <span class="status ok" data-i18n="st_accepted">Accepted</span>
           </div>
-          <div class="desc">Benchmarking LLM performance on coded entity resolution over noisy web evidence.</div>
+          <div class="desc" data-i18n="desc2">Benchmarking LLM performance on coded entity resolution over noisy web evidence.</div>
+          <div class="links"><a href="https://aclanthology.org/2026.emnlp-main.660/" target="_blank" rel="noopener">[Paper]</a> <a href="https://huggingface.co/datasets/janehaha/MelonBench" target="_blank" rel="noopener">[Dataset]</a></div>
         </div>
 
         <div class="pub">
@@ -305,7 +316,7 @@
           <div class="meta-line">
             <span class="venue">IJCNN 2026</span>
             <span class="vtag c">CCF-C</span>
-            <span class="status ok">Published</span>
+            <span class="status ok" data-i18n="st_published">Published</span>
           </div>
         </div>
 
@@ -315,9 +326,9 @@
           <div class="meta-line">
             <span class="venue">ICLR 2027</span>
             <span class="vtag a">CCF-A</span>
-            <span class="status pend">Under Review</span>
+            <span class="status pend" data-i18n="st_review">Under Review</span>
           </div>
-          <div class="desc">VLA simulation data generation and zero-shot sim-to-real transfer for real-world manipulation.</div>
+          <div class="desc" data-i18n="desc3">VLA simulation data generation and zero-shot sim-to-real transfer for real-world manipulation.</div>
         </div>
 
         <div class="pub">
@@ -326,12 +337,12 @@
           <div class="meta-line">
             <span class="venue">ICLR 2027</span>
             <span class="vtag a">CCF-A</span>
-            <span class="status pend">Under Review</span>
+            <span class="status pend" data-i18n="st_review">Under Review</span>
           </div>
-          <div class="desc">Training-free retrieval-conditioned calibration for lifelong knowledge editing of LLMs.</div>
+          <div class="desc" data-i18n="desc4">Training-free retrieval-conditioned calibration for lifelong knowledge editing of LLMs.</div>
         </div>
 
-        <div class="pubsub">Journal Articles</div>
+        <div class="pubsub" data-i18n="pubsub_journal">Journal Articles</div>
 
         <div class="pub">
           <div class="title">Geometric and Topological Structure-Induced Large-Scale Graph Learning for Social and Information Networks</div>
@@ -339,8 +350,9 @@
           <div class="meta-line">
             <span class="venue">Pattern Recognition, 2025</span>
             <span class="vtag j">SCI Q1 · 中科院一区 TOP</span>
-            <span class="status ok">Published</span>
+            <span class="status ok" data-i18n="st_published">Published</span>
           </div>
+          <div class="links"><a href="https://doi.org/10.1016/j.patcog.2025.112935" target="_blank" rel="noopener">[Paper]</a></div>
         </div>
 
         <div class="pub">
@@ -349,8 +361,9 @@
           <div class="meta-line">
             <span class="venue">Pattern Recognition, 2026</span>
             <span class="vtag j">SCI Q1 · 中科院一区 TOP</span>
-            <span class="status ok">Published</span>
+            <span class="status ok" data-i18n="st_published">Published</span>
           </div>
+          <div class="links"><a href="https://doi.org/10.1016/j.patcog.2026.114071" target="_blank" rel="noopener">[Paper]</a></div>
         </div>
 
         <div class="pub">
@@ -359,8 +372,9 @@
           <div class="meta-line">
             <span class="venue">Expert Systems with Applications, 2026</span>
             <span class="vtag j">SCI Q1 · 中科院一区 TOP</span>
-            <span class="status ok">Published</span>
+            <span class="status ok" data-i18n="st_published">Published</span>
           </div>
+          <div class="links"><a href="https://doi.org/10.1016/j.eswa.2026.132503" target="_blank" rel="noopener">[Paper]</a></div>
         </div>
 
         <div class="pub">
@@ -369,9 +383,10 @@
           <div class="meta-line">
             <span class="venue">Knowledge-Based Systems, 2026</span>
             <span class="vtag j">SCI Q1 · 中科院一区 TOP</span>
-            <span class="status ok">Published</span>
+            <span class="status ok" data-i18n="st_published">Published</span>
           </div>
-          <div class="desc">Stable and controllable knowledge updates for LLMs via geometric editing.</div>
+          <div class="desc" data-i18n="desc5">Stable and controllable knowledge updates for LLMs via geometric editing.</div>
+          <div class="links"><a href="https://doi.org/10.1016/j.knosys.2026.117214" target="_blank" rel="noopener">[Paper]</a></div>
         </div>
 
         <div class="pub">
@@ -380,38 +395,38 @@
           <div class="meta-line">
             <span class="venue">Pattern Recognition</span>
             <span class="vtag j">SCI Q1 · 中科院一区 TOP</span>
-            <span class="status pend">Under Review</span>
+            <span class="status pend" data-i18n="st_review">Under Review</span>
           </div>
-          <div class="desc">Training-free visual evidence fusion to mitigate hallucinations in medical multimodal LLMs.</div>
+          <div class="desc" data-i18n="desc6">Training-free visual evidence fusion to mitigate hallucinations in medical multimodal LLMs.</div>
         </div>
       </div>
     </section>
 
     <!-- ============ EDUCATION ============ -->
     <section id="education">
-      <h2><span class="ico">📖</span>Education</h2>
+      <h2 data-i18n="h_edu"><span class="ico">📖</span>Education</h2>
       <div class="card">
         <div class="row">
           <div class="date">Sep 2023 – Jun 2027</div>
           <div>
-            <h3>East China University of Science and Technology <span class="meta">· Shanghai</span></h3>
-            <div class="deg">Ph.D. in Computer Science and Technology</div>
-            <div class="meta">Advisor: Prof. <a href="https://cise.ecust.edu.cn/2026/0617/c16487a191326/page.htm" target="_blank" rel="noopener">Wang Zhe (王喆)</a></div>
+            <h3 data-i18n-html="edu1">East China University of Science and Technology <span class="meta">· Shanghai</span></h3>
+            <div class="deg" data-i18n="deg1">Ph.D. in Computer Science and Technology</div>
+            <div class="meta" data-i18n-html="adv1">Advisor: Prof. <a href="https://cise.ecust.edu.cn/2026/0617/c16487a191326/page.htm" target="_blank" rel="noopener">Wang Zhe (王喆)</a></div>
           </div>
         </div>
         <div class="row">
           <div class="date">Sep 2020 – Jun 2023</div>
           <div>
-            <h3>Zhengzhou University of Light Industry <span class="meta">· Zhengzhou</span></h3>
-            <div class="deg">M.Eng. in Software Engineering</div>
-            <div class="meta">Advisor: Prof. Zhang Zhifeng (张志锋)</div>
+            <h3 data-i18n-html="edu2">Zhengzhou University of Light Industry <span class="meta">· Zhengzhou</span></h3>
+            <div class="deg" data-i18n="deg2">M.Eng. in Software Engineering</div>
+            <div class="meta" data-i18n="adv2">Advisor: Prof. Zhang Zhifeng (张志锋)</div>
           </div>
         </div>
         <div class="row">
           <div class="date">Sep 2015 – Jun 2019</div>
           <div>
-            <h3>Hebei University of Architecture <span class="meta">· Zhangjiakou</span></h3>
-            <div class="deg">B.Eng. in Computer Science and Technology</div>
+            <h3 data-i18n-html="edu3">Hebei University of Architecture <span class="meta">· Zhangjiakou</span></h3>
+            <div class="deg" data-i18n="deg3">B.Eng. in Computer Science and Technology</div>
           </div>
         </div>
       </div>
@@ -419,25 +434,25 @@
 
     <!-- ============ HONORS ============ -->
     <section id="honors">
-      <h2><span class="ico">🏆</span>Honors &amp; Awards</h2>
+      <h2 data-i18n="h_honors"><span class="ico">🏆</span>Honors &amp; Awards</h2>
       <div class="card">
         <ul style="margin:0;padding-left:20px;">
-          <li>Member of a Henan Province <b>”Civilized Dormitory”</b> (河南省文明宿舍)</li>
+          <li data-i18n-html="honor1">Member of a Henan Province <b>“Civilized Dormitory”</b> (河南省文明宿舍)</li>
         </ul>
       </div>
     </section>
 
     <!-- ============ ACTIVITIES ============ -->
     <section id="activities">
-      <h2><span class="ico">⚽</span>Sports &amp; Activities</h2>
+      <h2 data-i18n="h_act"><span class="ico">⚽</span>Sports &amp; Activities</h2>
       <div class="card">
         <div class="row">
-          <div class="date">Undergraduate</div>
-          <div>Member of the <b>School of Information Engineering</b> football and basketball teams.</div>
+          <div class="date" data-i18n="act1_date">Undergraduate</div>
+          <div data-i18n-html="act1">Member of the <b>School of Information Engineering</b> football and basketball teams.</div>
         </div>
         <div class="row">
-          <div class="date">Graduate</div>
-          <div>Member of the <b>School of Software</b> football and basketball teams.</div>
+          <div class="date" data-i18n="act2_date">Graduate</div>
+          <div data-i18n-html="act2">Member of the <b>School of Software</b> football and basketball teams.</div>
         </div>
       </div>
     </section>
@@ -446,11 +461,126 @@
 
   <footer>
     © <span id="yr">2026</span> Theo Liu · <a href="mailto:ssssliug@foxmail.com">ssssliug@foxmail.com</a><br/>
-    <span style="opacity:.7">Built as a single-file academic homepage.</span>
+    <span style="opacity:.7" data-i18n="footer_note">Built as a single-file academic homepage.</span>
   </footer>
 
   <script>
+    /* ---------- bilingual support (EN / 中文) ---------- */
+    const I18N = {
+      en: {
+        nav_about:"About", nav_research:"Research", nav_news:"News", nav_pubs:"Publications", nav_edu:"Education",
+        hero_aff:'Ph.D. Candidate, Computer Science · East China University of Science and Technology <span class="city">· Shanghai</span>',
+        hero_tag:'My research centers on <b>Large Language Models</b> — parameter-efficient fine-tuning (PEFT), Mixture-of-Experts (MoE) training &amp; inference optimization, and multimodal LLMs. I also build LLM applications end-to-end, from training and reinforcement learning (GRPO) to agent workflows and RAG systems.',
+        btn_email:"✉ Email",
+        h_about:"👋 About Me",
+        about_p1:'I am a Ph.D. candidate in Computer Science and Technology at the <b>East China University of Science and Technology (ECUST)</b>, Shanghai.',
+        about_p2:'My work spans <b>LLM algorithms</b> and <b>AI application engineering</b>: efficient fine-tuning (SFT / PEFT / GRPO), MoE architecture design, inference acceleration, retrieval-augmented generation (RAG), agent workflows, and full-stack deployment. I enjoy turning research ideas into shipped products, with hands-on experience in model training platforms, inference acceleration, and end-to-end LLM deployment.',
+        h_research:"🔬 Research Interests",
+        chip1:"Parameter-Efficient Fine-Tuning (PEFT)", chip2:"Mixture-of-Experts (MoE)", chip3:"Multimodal LLMs",
+        chip4:"Reinforcement Learning · GRPO", chip5:"LLM Inference Optimization", chip6:"LLM Knowledge Editing",
+        chip7:"Embodied AI · Vision-Language-Action", chip8:"Retrieval-Augmented Generation (RAG)", chip9:"Agents & Workflows",
+        h_news:"📢 News",
+        news1:'<span class="when">2026</span>One paper accepted to <b>EMNLP 2026</b> — <i>MelonBench: A Benchmark for Coded Entity Resolution over Noisy Web Evidence</i>.',
+        news2:'<span class="when">2026</span>One paper accepted to <b>Findings of ACL 2026</b> (CCF-A) — <i>Specialization without Sparsity: Split-Path Experts for LLM Fine-Tuning</i>.',
+        news3:'<span class="when">2026</span>One paper accepted to <b>IJCNN 2026</b> (CCF-C).',
+        news4:'<span class="when">2026</span>One paper published in <b>Knowledge-Based Systems</b> (SCI Q1 Top) — <i>CAGE: Capacity Aware Geometric Editing</i>.',
+        news5:'<span class="when">2025–2026</span>Three papers published in SCI Q1 Top journals (<i>Pattern Recognition</i> ×2, <i>Expert Systems with Applications</i>).',
+        news6:'<span class="when">2026</span>Three papers under review — two at <b>ICLR 2027</b> (VLA sim-to-real, lifelong model editing) and one at <b>Pattern Recognition</b>.',
+        h_pubs:"📝 Publications", pubsub_conf:"Conference Papers", pubsub_journal:"Journal Articles",
+        st_accepted:"Accepted", st_published:"Published", st_review:"Under Review",
+        desc1:"Efficient and expressive MoE-style training and inference for LLMs via split-path experts.",
+        desc2:"Benchmarking LLM performance on coded entity resolution over noisy web evidence.",
+        desc3:"VLA simulation data generation and zero-shot sim-to-real transfer for real-world manipulation.",
+        desc4:"Training-free retrieval-conditioned calibration for lifelong knowledge editing of LLMs.",
+        desc5:"Stable and controllable knowledge updates for LLMs via geometric editing.",
+        desc6:"Training-free visual evidence fusion to mitigate hallucinations in medical multimodal LLMs.",
+        h_edu:"📖 Education",
+        edu1:'East China University of Science and Technology <span class="meta">· Shanghai</span>',
+        deg1:"Ph.D. in Computer Science and Technology",
+        adv1:'Advisor: Prof. <a href="https://cise.ecust.edu.cn/2026/0617/c16487a191326/page.htm" target="_blank" rel="noopener">Wang Zhe (王喆)</a>',
+        edu2:'Zhengzhou University of Light Industry <span class="meta">· Zhengzhou</span>',
+        deg2:"M.Eng. in Software Engineering",
+        adv2:"Advisor: Prof. Zhang Zhifeng (张志锋)",
+        edu3:'Hebei University of Architecture <span class="meta">· Zhangjiakou</span>',
+        deg3:"B.Eng. in Computer Science and Technology",
+        h_honors:"🏆 Honors & Awards",
+        honor1:'Member of a Henan Province <b>“Civilized Dormitory”</b> (河南省文明宿舍)',
+        h_act:"⚽ Sports & Activities",
+        act1_date:"Undergraduate", act1:'Member of the <b>School of Information Engineering</b> football and basketball teams.',
+        act2_date:"Graduate", act2:'Member of the <b>School of Software</b> football and basketball teams.',
+        footer_note:"Built as a single-file academic homepage."
+      },
+      zh: {
+        nav_about:"关于我", nav_research:"研究方向", nav_news:"新闻动态", nav_pubs:"论文发表", nav_edu:"教育经历",
+        hero_aff:'计算机科学与技术 · 博士研究生 · 华东理工大学 <span class="city">· 上海</span>',
+        hero_tag:'我的研究聚焦于<b>大语言模型</b>——参数高效微调（PEFT）、混合专家（MoE）训练与推理优化以及多模态大模型；同时端到端构建 LLM 应用，覆盖模型训练、强化学习（GRPO）、智能体工作流与 RAG 系统。',
+        btn_email:"✉ 邮箱",
+        h_about:"👋 个人简介",
+        about_p1:'我是<b>华东理工大学</b>计算机科学与技术专业博士研究生（上海）。',
+        about_p2:'我的工作横跨 <b>LLM 算法</b>与 <b>AI 应用工程</b>：高效微调（SFT / PEFT / GRPO）、MoE 架构设计、推理加速、检索增强生成（RAG）、智能体工作流与全栈部署。我乐于把研究想法做成可落地的产品，在模型训练平台、推理加速与端到端 LLM 部署方面有丰富的实战经验。',
+        h_research:"🔬 研究方向",
+        chip1:"参数高效微调（PEFT）", chip2:"混合专家（MoE）", chip3:"多模态大模型",
+        chip4:"强化学习 · GRPO", chip5:"LLM 推理优化", chip6:"大模型知识编辑",
+        chip7:"具身智能 · 视觉-语言-动作（VLA）", chip8:"检索增强生成（RAG）", chip9:"智能体与工作流",
+        h_news:"📢 新闻动态",
+        news1:'<span class="when">2026</span>论文 <i>MelonBench: A Benchmark for Coded Entity Resolution over Noisy Web Evidence</i> 被 <b>EMNLP 2026</b> 录用。',
+        news2:'<span class="when">2026</span>论文 <i>Specialization without Sparsity: Split-Path Experts for LLM Fine-Tuning</i> 被 <b>ACL 2026 Findings</b>（CCF-A）录用。',
+        news3:'<span class="when">2026</span>一篇论文被 <b>IJCNN 2026</b>（CCF-C）录用。',
+        news4:'<span class="when">2026</span>论文 <i>CAGE: Capacity Aware Geometric Editing</i> 发表于 <b>Knowledge-Based Systems</b>（SCI 一区 Top）。',
+        news5:'<span class="when">2025–2026</span>三篇论文发表于 SCI 一区 Top 期刊（<i>Pattern Recognition</i> ×2、<i>Expert Systems with Applications</i>）。',
+        news6:'<span class="when">2026</span>三篇论文在投——<b>ICLR 2027</b> 两篇（VLA 仿真到真机迁移、终身模型编辑），<b>Pattern Recognition</b> 一篇。',
+        h_pubs:"📝 论文发表", pubsub_conf:"会议论文", pubsub_journal:"期刊论文",
+        st_accepted:"已录用", st_published:"已发表", st_review:"在投",
+        desc1:"基于分裂路径专家的 MoE 架构，实现 LLM 高效训练与推理。",
+        desc2:"评测大模型在噪声网络数据下进行暗语实体消解的能力。",
+        desc3:"面向真机操作的 VLA 仿真数据生成与零样本仿真到真机迁移。",
+        desc4:"免训练的检索条件归一化校准，实现大模型终身知识编辑。",
+        desc5:"基于几何编辑的大语言模型知识稳定可控更新。",
+        desc6:"免训练视觉证据融合，缓解医学多模态大模型幻觉。",
+        h_edu:"📖 教育经历",
+        edu1:'华东理工大学 <span class="meta">· 上海</span>',
+        deg1:"计算机科学与技术 · 博士",
+        adv1:'导师：<a href="https://cise.ecust.edu.cn/2026/0617/c16487a191326/page.htm" target="_blank" rel="noopener">王喆</a> 教授',
+        edu2:'郑州轻工业大学 <span class="meta">· 郑州</span>',
+        deg2:"软件工程 · 工学硕士",
+        adv2:"导师：张志锋 教授",
+        edu3:'河北建筑工程学院 <span class="meta">· 张家口</span>',
+        deg3:"计算机科学与技术 · 工学学士",
+        h_honors:"🏆 荣誉奖项",
+        honor1:'<b>河南省“文明宿舍”</b>成员',
+        h_act:"⚽ 体育活动",
+        act1_date:"本科", act1:'<b>信息工程学院</b>足球队、篮球队成员。',
+        act2_date:"研究生", act2:'<b>软件学院</b>足球队、篮球队成员。',
+        footer_note:"单文件学术主页。"
+      }
+    };
+
+    let lang = 'en';
+    try{ lang = localStorage.getItem('lang') || 'en'; }catch(e){}
+    if(!I18N[lang]) lang = 'en';
+
+    function applyLang(){
+      document.documentElement.lang = (lang === 'zh') ? 'zh-CN' : 'en';
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const k = el.getAttribute('data-i18n');
+        if(I18N[lang][k] != null) el.textContent = I18N[lang][k];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+        const k = el.getAttribute('data-i18n-html');
+        if(I18N[lang][k] != null) el.innerHTML = I18N[lang][k];
+      });
+      const btn = document.getElementById('langBtn');
+      if(btn) btn.textContent = (lang === 'zh') ? 'EN' : '中文';
+    }
+
+    document.getElementById('langBtn').addEventListener('click', ()=>{
+      lang = (lang === 'zh') ? 'en' : 'zh';
+      try{ localStorage.setItem('lang', lang); }catch(e){}
+      applyLang();
+    });
+
     document.getElementById('yr').textContent = new Date().getFullYear();
+    applyLang();
   </script>
 </body>
 </html>
