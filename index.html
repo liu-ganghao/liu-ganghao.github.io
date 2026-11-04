@@ -135,8 +135,10 @@
       letter-spacing:.2px;white-space:nowrap;
     }
     .vtag.a{background:#fdecea;color:var(--tag-a);}
+    .vtag.b{background:#ece9fb;color:#5b4bc4;}
     .vtag.j{background:var(--accent-soft);color:var(--tag-j);}
     .vtag.c{background:#eef0f3;color:var(--tag-c);}
+    .pub .desc{color:var(--muted);font-size:13.5px;margin-top:6px;}
     .status{display:inline-block;padding:2px 9px;border-radius:6px;font-size:12px;font-weight:600;}
     .status.ok{background:var(--ok-bg);color:var(--ok);}
     .status.pend{background:var(--pend-bg);color:var(--pend);}
@@ -244,6 +246,8 @@
           <span class="chip">Multimodal LLMs</span>
           <span class="chip">Reinforcement Learning · GRPO</span>
           <span class="chip">LLM Inference Optimization</span>
+          <span class="chip">LLM Knowledge Editing</span>
+          <span class="chip">Embodied AI · Vision-Language-Action</span>
           <span class="chip">Retrieval-Augmented Generation (RAG)</span>
           <span class="chip">Agents &amp; Workflows</span>
         </div>
@@ -260,6 +264,7 @@
           <li><span class="when">2026</span>One paper accepted to <b>IJCNN 2026</b> (CCF-C).</li>
           <li><span class="when">2026</span>One paper published in <b>Knowledge-Based Systems</b> (SCI Q1 Top) — <i>CAGE: Capacity Aware Geometric Editing</i>.</li>
           <li><span class="when">2025–2026</span>Three papers published in SCI Q1 Top journals (<i>Pattern Recognition</i> ×2, <i>Expert Systems with Applications</i>).</li>
+          <li><span class="when">2026</span>Three papers under review — two at <b>ICLR 2027</b> (VLA sim-to-real, lifelong model editing) and one at <b>Pattern Recognition</b>.</li>
         </ul>
       </div>
     </section>
@@ -279,6 +284,7 @@
             <span class="vtag a">CCF-A</span>
             <span class="status ok">Accepted</span>
           </div>
+          <div class="desc">Efficient and expressive MoE-style training and inference for LLMs via split-path experts.</div>
           <!-- <div class="links"><a href="#">[Paper]</a> <a href="#">[Code]</a></div> -->
         </div>
 
@@ -287,9 +293,10 @@
           <div class="auth">Z Lin, J Li, Y Zhang, Z Liu, Y Shao, Y Tong, <me>G Liu</me>, Q Zhang, Z Wang</div>
           <div class="meta-line">
             <span class="venue">Proceedings of EMNLP 2026</span>
-            <span class="vtag a">Top NLP</span>
+            <span class="vtag b">CCF-B</span>
             <span class="status ok">Accepted</span>
           </div>
+          <div class="desc">Benchmarking LLM performance on coded entity resolution over noisy web evidence.</div>
         </div>
 
         <div class="pub">
@@ -298,18 +305,30 @@
           <div class="meta-line">
             <span class="venue">IJCNN 2026</span>
             <span class="vtag c">CCF-C</span>
-            <span class="status ok">Accepted</span>
+            <span class="status ok">Published</span>
           </div>
         </div>
 
         <div class="pub">
-          <div class="title">Rethinking Visual Evidence in Medical MLLMs: Contrastive Visual Calibration for Enhanced Diagnostic Reliability</div>
+          <div class="title">FITR: From Articulated Object Images to Interactive 3D Assets for Real-World Manipulation</div>
           <div class="auth"><me>G Liu</me>, et al.</div>
           <div class="meta-line">
-            <span class="venue">AAAI</span>
+            <span class="venue">ICLR 2027</span>
             <span class="vtag a">CCF-A</span>
             <span class="status pend">Under Review</span>
           </div>
+          <div class="desc">VLA simulation data generation and zero-shot sim-to-real transfer for real-world manipulation.</div>
+        </div>
+
+        <div class="pub">
+          <div class="title">RECON: Retrieval-Conditioned Norm Calibration for Lifelong Model Editing</div>
+          <div class="auth"><me>G Liu</me>, et al.</div>
+          <div class="meta-line">
+            <span class="venue">ICLR 2027</span>
+            <span class="vtag a">CCF-A</span>
+            <span class="status pend">Under Review</span>
+          </div>
+          <div class="desc">Training-free retrieval-conditioned calibration for lifelong knowledge editing of LLMs.</div>
         </div>
 
         <div class="pubsub">Journal Articles</div>
@@ -352,16 +371,18 @@
             <span class="vtag j">SCI Q1 · 中科院一区 TOP</span>
             <span class="status ok">Published</span>
           </div>
+          <div class="desc">Stable and controllable knowledge updates for LLMs via geometric editing.</div>
         </div>
 
         <div class="pub">
-          <div class="title">SPAR: Split-Path Adaptive Representation for Effective Fine-Tuning of Large Language Models</div>
+          <div class="title">Contrastive Visual Enhancement: Training-Free Visual Evidence Fusion for Hallucination Mitigation in Medical MLLMs</div>
           <div class="auth"><me>G Liu</me>, et al.</div>
           <div class="meta-line">
-            <span class="venue">IEEE Trans. on Emerging Topics in Computational Intelligence</span>
-            <span class="vtag c">SCI Q1 · 中科院二区</span>
+            <span class="venue">Pattern Recognition</span>
+            <span class="vtag j">SCI Q1 · 中科院一区 TOP</span>
             <span class="status pend">Under Review</span>
           </div>
+          <div class="desc">Training-free visual evidence fusion to mitigate hallucinations in medical multimodal LLMs.</div>
         </div>
       </div>
     </section>
